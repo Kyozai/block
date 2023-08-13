@@ -1,42 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Google Blockly Example</title>
-    <!-- Blocklyƒ‰ƒCƒuƒ‰ƒŠ‚ÌCDN‚ğ“Ç‚İ‚Ş -->
+    <title>Block Kyozai</title>
+    <!-- Blocklyãƒ©ã‚¤ãƒ–ãƒ©ãƒªã®CDNã‚’èª­ã¿è¾¼ã‚€ -->
     <script src="https://unpkg.com/blockly"></script>
 </head>
 <body>
-    <!-- ƒuƒƒbƒN‚Ìì‹Æ—Ìˆæ‚ğ•\¦‚·‚é‚½‚ß‚Ì—v‘f -->
+    <!-- ãƒ–ãƒ­ãƒƒã‚¯ã®ä½œæ¥­é ˜åŸŸã‚’è¡¨ç¤ºã™ã‚‹ãŸã‚ã®è¦ç´  -->
     <div id="blocklyDiv" style="height: 400px; width: 600px;"></div>
 
-    <!-- ƒc[ƒ‹ƒ{ƒbƒNƒX‚ğ’è‹` -->
+    <!-- ãƒ„ãƒ¼ãƒ«ãƒœãƒƒã‚¯ã‚¹ã‚’å®šç¾© -->
     <xml id="toolbox" style="display: none;">
         <block type="controls_if"></block>
         <block type="logic_compare"></block>
-        <!-- ‘¼‚ÌƒuƒƒbƒN‚ğ’Ç‰Á -->
+        <!-- ä»–ã®ãƒ–ãƒ­ãƒƒã‚¯ã‚’è¿½åŠ  -->
     </xml>
 
-    <!-- Blockly‚Ì‰Šú‰» -->
+    <!-- Blocklyã®åˆæœŸåŒ– -->
     <script>
-        // Blockly‚Ì‰Šú‰»
+        // Blocklyã®åˆæœŸåŒ–
         var workspace = Blockly.inject('blocklyDiv', {
-            toolbox: document.getElementById('toolbox')  // ƒc[ƒ‹ƒ{ƒbƒNƒX‚Ì—v‘f‚ğw’è
+            toolbox: document.getElementById('toolbox')  // ãƒ„ãƒ¼ãƒ«ãƒœãƒƒã‚¯ã‚¹ã®è¦ç´ ã‚’æŒ‡å®š
         });
 
-        // ƒuƒƒbƒN‚ª•ÏX‚³‚ê‚½Û‚ÌƒR[ƒ‹ƒoƒbƒN‚ğİ’è
+        // ãƒ–ãƒ­ãƒƒã‚¯ãŒå¤‰æ›´ã•ã‚ŒãŸéš›ã®ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ã‚’è¨­å®š
         workspace.addChangeListener(updateCode);
 
-        // ¶¬‚³‚ê‚½ƒR[ƒh‚ğ•\¦‚·‚é‚½‚ß‚ÌƒGƒŠƒA
+        // ç”Ÿæˆã•ã‚ŒãŸã‚³ãƒ¼ãƒ‰ã‚’è¡¨ç¤ºã™ã‚‹ãŸã‚ã®ã‚¨ãƒªã‚¢
         var codeArea = document.getElementById('codeArea');
 
-        // ¶¬‚³‚ê‚½ƒR[ƒh‚ğXV‚·‚éƒR[ƒ‹ƒoƒbƒNŠÖ”
+        // ç”Ÿæˆã•ã‚ŒãŸã‚³ãƒ¼ãƒ‰ã‚’æ›´æ–°ã™ã‚‹ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯é–¢æ•°
         function updateCode(event) {
             var code = Blockly.JavaScript.workspaceToCode(workspace);
             codeArea.textContent = code;
         }
     </script>
 
-    <!-- ¶¬‚³‚ê‚½ƒR[ƒh‚ğ•\¦‚·‚é‚½‚ß‚ÌƒGƒŠƒA -->
+    <!-- ç”Ÿæˆã•ã‚ŒãŸã‚³ãƒ¼ãƒ‰ã‚’è¡¨ç¤ºã™ã‚‹ãŸã‚ã®ã‚¨ãƒªã‚¢ -->
     <pre id="codeArea"></pre>
 </body>
 
