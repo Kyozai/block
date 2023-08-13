@@ -15,7 +15,7 @@
         <block type="logic_compare"></block>
         <!-- 他のブロックを追加 -->
         <!-- カスタムブロックを定義 -->
-     　　<block type="custom_repeat"></block>
+　　　　　<block type="custom_repeat"></block>
       
     </xml>
 
@@ -25,6 +25,19 @@
         var workspace = Blockly.inject('blocklyDiv', {
             toolbox: document.getElementById('toolbox')  // ツールボックスの要素を指定
         });
+
+     
+        // ブロックが変更された際のコールバックを設定
+        workspace.addChangeListener(updateCode);
+
+        // 生成されたコードを表示するためのエリア
+        var codeArea = document.getElementById('codeArea');
+
+        // 生成されたコードを更新するコールバック関数
+        function updateCode(event) {
+            var code = Blockly.JavaScript.workspaceToCode(workspace);
+            codeArea.textContent = code;
+        }
 
         // カスタム「繰り返し」ブロックの定義
         Blockly.Blocks['custom_repeat'] = {
@@ -65,20 +78,8 @@
             return code;
         };
 
-        
 
         
-        // ブロックが変更された際のコールバックを設定
-        workspace.addChangeListener(updateCode);
-
-        // 生成されたコードを表示するためのエリア
-        var codeArea = document.getElementById('codeArea');
-
-        // 生成されたコードを更新するコールバック関数
-        function updateCode(event) {
-            var code = Blockly.JavaScript.workspaceToCode(workspace);
-            codeArea.textContent = code;
-        }
     </script>
 
     <!-- 生成されたコードを表示するためのエリア -->
