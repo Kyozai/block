@@ -14,6 +14,9 @@
         <block type="controls_if"></block>
         <block type="logic_compare"></block>
         <!-- 他のブロックを追加 -->
+        <!-- カスタムブロックを定義 -->
+        <!------------------------------->
+        <block type="custom_block"></block>
     </xml>
 
     <!-- Blocklyの初期化 -->
@@ -22,7 +25,26 @@
         var workspace = Blockly.inject('blocklyDiv', {
             toolbox: document.getElementById('toolbox')  // ツールボックスの要素を指定
         });
+///////////////////////////////////////////////////////////
+         Blockly.Blocks['custom_block'] = {
+            init: function() {
+                this.jsonInit({
+                    "type": "custom_block",
+                    "message0": "Custom Block",
+                    "previousStatement": null,
+                    "nextStatement": null,
+                    "colour": 230,
+                    "tooltip": "This is a custom block."
+                });
+            }
+        };
 
+        / カスタムブロックのJavaScript生成
+        Blockly.JavaScript['custom_block'] = function(block) {
+            return '';
+        };
+////////////////////////////////////////////////////////////
+        
         // ブロックが変更された際のコールバックを設定
         workspace.addChangeListener(updateCode);
 
