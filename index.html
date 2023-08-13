@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Google Blockly Example</title>
+    <!-- BlocklyライブラリのCDNを読み込む -->
+    <script src="https://unpkg.com/blockly"></script>
+</head>
+<body>
+    <!-- ブロックの作業領域を表示するための要素 -->
+    <div id="blocklyDiv" style="height: 400px; width: 600px;"></div>
+
+    <!-- ツールボックスを定義 -->
+    <xml id="toolbox" style="display: none;">
+        <block type="controls_if"></block>
+        <block type="logic_compare"></block>
+        <!-- 他のブロックを追加 -->
+    </xml>
+
+    <!-- Blocklyの初期化 -->
+    <script>
+        // Blocklyの初期化
+        var workspace = Blockly.inject('blocklyDiv', {
+            toolbox: document.getElementById('toolbox')  // ツールボックスの要素を指定
+        });
+
+        // ブロックが変更された際のコールバックを設定
+        workspace.addChangeListener(updateCode);
+
+        // 生成されたコードを表示するためのエリア
+        var codeArea = document.getElementById('codeArea');
+
+        // 生成されたコードを更新するコールバック関数
+        function updateCode(event) {
+            var code = Blockly.JavaScript.workspaceToCode(workspace);
+            codeArea.textContent = code;
+        }
+    </script>
+
+    <!-- 生成されたコードを表示するためのエリア -->
+    <pre id="codeArea"></pre>
+</body>
+
+</html>
+
