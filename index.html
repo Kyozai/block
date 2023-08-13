@@ -15,6 +15,7 @@
         <block type="logic_compare"></block>
         <!-- 他のブロックを追加 -->
         <!-- カスタムブロックを定義 -->
+        <block type="custom_addition"></block>
       
     </xml>
 
@@ -25,6 +26,42 @@
             toolbox: document.getElementById('toolbox')  // ツールボックスの要素を指定
         });
 
+// カスタムブロックの定義
+        Blockly.Blocks['custom_addition'] = {
+            init: function() {
+                this.jsonInit({
+                    "type": "custom_addition",
+                    "message0": "%1 + %2",
+                    "args0": [
+                        {
+                            "type": "input_value",
+                            "name": "A",
+                            "check": "Number"  // 入力の型を指定
+                        },
+                        {
+                            "type": "input_value",
+                            "name": "B",
+                            "check": "Number"  // 入力の型を指定
+                        }
+                    ],
+                    "output": "Number",
+                    "colour": 230,
+                    "tooltip": "Add two numbers"
+                });
+            }
+        };
+
+        // カスタムブロックのJavaScript生成
+        Blockly.JavaScript['custom_addition'] = function(block) {
+            var value_a = Blockly.JavaScript.valueToCode(block, 'A', Blockly.JavaScript.ORDER_NONE);
+            var value_b = Blockly.JavaScript.valueToCode(block, 'B', Blockly.JavaScript.ORDER_NONE);
+            var code = value_a + ' + ' + value_b;
+            return [code, Blockly.JavaScript.ORDER_ADDITION];
+        };
+
+
+
+        
         // ブロックが変更された際のコールバックを設定
         workspace.addChangeListener(updateCode);
 
